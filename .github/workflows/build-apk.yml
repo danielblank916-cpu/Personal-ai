@@ -1,6 +1,6 @@
 name: Build NEO Puzzle Assistant APK
 
-on:
+'on':
 workflow_dispatch:
 
 permissions:
@@ -37,14 +37,11 @@ steps:
     shell: bash
     run: |
       yes | sdkmanager --licenses
-      sdkmanager --licenses </dev/null
 
   - name: Install required SDK packages
+    shell: bash
     run: |
-      sdkmanager \
-        "platform-tools" \
-        "platforms;android-35" \
-        "build-tools;35.0.0"
+      sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
   - name: Build debug APK
     run: gradle --no-daemon assembleDebug
